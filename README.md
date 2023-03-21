@@ -22,3 +22,7 @@
 - Machine Learning
 - Exportmöglichkeiten, d.h. Umwandlung in andere Formate wie png, jpg
 - Konvertierung mit base64 für Frontend
+
+## Mockup
+
+![Screenshot](Dicom.jpg)
