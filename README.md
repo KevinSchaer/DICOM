@@ -10,7 +10,9 @@
 - Messung von Distanzen (anhand von Pixel berechnen)
 - Segmentierung
 - „Zeichnen“ —> manuelles einfärben von Bereichen
-- Aufbau/Unterteilung in 3 Bereiche:
+
+### Aufbau/Unterteilung in 3 Bereiche:
+
 - Header mit Tools
 - Ausgabe/Info Zeile
 - Mainteil für Darstellung Bild
@@ -26,3 +28,34 @@
 ## Mockup
 
 ![Screenshot](Dicom.jpg)
+
+#### Funktionalität WebApp
+
+- Toolbar
+  - Distanzmessung
+  - Winkelmessung
+  - Zeichnen
+    - Farben auswählen
+    - Stiftdicke
+  - Geometrische Figuren
+    - Kreise
+    - Rechtecke
+    - Pfeile
+  - Lupe
+  - Bildrotation
+    - nach links/rechts
+    - 90° Schritte
+  - Spiegeln
+    - vertikal
+    - horizontal
+ - Filter
+    - Transformation
+      - Drehen
+      - Verzerren
+    - Kantendetektion
+    - Kontrastanpassung
+    - Denoising
+    - Windowing (inkl. Histogrammeinblendung und manueller Eingrenzung)
+- Metadaten-Extraktion (Modalfenster und Name, Geburtsdatum, Geschlecht, wichtige Gerätedaten in Headerzeile; evtl. mit Auswahl über Checkboxen)
+- evtl. Hilfe
+- Exportmöglichkeit in andere Formate
