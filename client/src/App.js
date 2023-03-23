@@ -1,23 +1,15 @@
-import { useEffect, useState } from "react";
-import './css/App.css';
-
-// https://dev.to/salarc123/how-to-connect-a-react-frontend-with-a-nodejs-express-backend-50i9
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import Main from './components/Main';
+import Missing from './components/helper/Missing';
 
 function App() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    fetch("/api")
-      .then(res => res.json())
-      .then(res => setData(res.message));
-  }, []);
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>{!data ? "Loading..." : data}</p>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<Main />} />
+        <Route path="*" exact={true} element={<Missing />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
