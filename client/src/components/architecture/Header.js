@@ -6,12 +6,11 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import LogoDicom from './DICOM.png'
+import LogoDicom from '../helper/DICOM.png'
 import React from "react";
 import { useNavigate} from "react-router-dom";
 
 const Header = (props) => {
-
     const [anchorElProfile, setAnchorElProfile] = React.useState(null);
     const navigate = useNavigate();
 
@@ -28,7 +27,7 @@ const Header = (props) => {
     }; 
 
     return (
-        <AppBar position='static' style={{ background: '#F5F5F5' }}>
+        <AppBar position="fixed" style={{ top: 0, background: '#F5F5F5' }}>
             <Toolbar>
                 <Box
                     component='img'

@@ -2,7 +2,7 @@ import React from "react";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import Header from "./helper/Header";
+import Header from "./architecture/Header";
 
 const theme = createTheme({
     palette: {
@@ -27,7 +27,7 @@ const Help = () => {
                         direction="column"
                         alignItems="center"
                         justifyContent="center"
-                        style={{ minHeight: '90vh' }}
+                        style={{ minHeight: '100vh' }}
                     >
                         Hilfe
                     </Grid>  
