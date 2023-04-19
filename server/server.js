@@ -6,6 +6,8 @@ const cors = require('cors');
 const corsOptions = require('./config/corsOptions');
 //const { logger } = require('./middleware/logEvents');
 const PORT = process.env.PORT || 5000;
+const dicomParser = require('dicom-parser');
+const cv = require('opencv4nodejs');
 
 // custom middleware logger
 //app.use(logger);
@@ -28,6 +30,28 @@ app.get("/api", (req, res) => {
     res.json({ message: "Hello from server!" });
   });
 
+  async function convertDicomToTiff(dicomBuffer, tiffFilePath) {
+    // parse the DICOM buffer
+    const dataSet = dicomParser.parseDicom(dicomBuffer);
+  
+    // extract the pixel data from the DICOM dataset
+    const pixelDataElement = dataSet.elements.x7fe00010;
+    const pixelData = new Uint16Array(
+      dicomBuffer,
+      pixelDataElement.dataOffset,
+      pixelDataElement.length / 2
+    );
+  
+    // create a Mat object from the pixel data
+    const rows = dataSet.uint16('x00280010');
+    const cols = dataSet.uint16('x00280011');
+    const mat = new cv.Mat(rows, cols, cv.CV_16UC1, pixelData);
+  
+    // save the Mat object as a TIFF file
+    await cv.imwriteAsync(tiffFilePath, mat);
+  }
+
+
 app.post('/api/upload', (req, res) => {
     const dicomImage = req.body.dicomImage;
   
@@ -36,7 +60,7 @@ app.post('/api/upload', (req, res) => {
   
     if (isDicomImage) {
       // Process the DICOM image data here
-      // ...
+      convertDicomToTiff(dicomImage, 'test.tiff');
       console.log(dicomImage);
       res.send({ success: true });
     } else {
